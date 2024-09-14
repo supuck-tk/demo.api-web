@@ -1,0 +1,9 @@
+websiet :
+  url : https://www.saucedemo.com
+  browser : chrome
+  # browser : headlesschrome
+
+waitingTime :
+  short : 3s
+  half  : 10s
+  long  : 30s

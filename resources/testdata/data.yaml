@@ -1,0 +1,21 @@
+TC_1  :
+  data1 :
+    userName  : "standard_user"
+    password  : "secret_sauce"
+  data2 :
+    nameProduct  : ["Test.allTheThings() T-Shirt (Red)", "Sauce Labs Bike Light", "Sauce Labs Backpack"]
+  data3 :
+    removeProduct : ["Sauce Labs Backpack"]
+  data4  :
+    firstName  : "Supuck"
+    lastName  : "TK"
+    zipCode : "10500"
+  data6  : 
+    orderSuccess : "Thank you for your order!"
+TC_2  :
+  Create  :
+    name  : "Supuck"
+    job  : "QA engineer"
+  Update  :
+    name  : "TK"
+    job : "Auto-update"
