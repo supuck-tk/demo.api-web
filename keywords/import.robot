@@ -11,5 +11,5 @@ Resource    ${CURDIR}/locators/index_locator.robot
 Resource    ${CURDIR}/common.robot
 Resource    ${CURDIR}/pages/index_page.robot
 #testdata
-Variables    ${CURDIR}/../resources/setting/setting.yaml
-Variables    ${CURDIR}/../resources/testdata/data.yaml
+Variables    ${CURDIR}/../resources/setting/setting.yml
+Variables    ${CURDIR}/../resources/testdata/data.yml

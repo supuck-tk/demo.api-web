@@ -28,7 +28,7 @@ Verify product active
             Log    "Product Not Found - ${nameProduct[${index}]}"    WARN
         END
     END
-    [RETURN]    ${productList_active}
+    RETURN    ${productList_active}
     
 Click add product to cart
     [Arguments]    ${nameProduct}
@@ -58,7 +58,7 @@ Verify product on cart
             Log    "Products May Be Removed From Cart - ${nameProduct[${index}]}"    WARN
         END
     END
-    [RETURN]    ${productList_cart}
+    RETURN    ${productList_cart}
 
 Click button remove product
     [Arguments]    ${removeProduct}
@@ -104,7 +104,7 @@ Calculate price
     FOR     ${index}    IN RANGE    ${range}
         ${total_price.num}    BuiltIn.Evaluate    ${total_price.num}+${price_list[${index}]}
     END
-    [RETURN]    ${total_price.num}
+    RETURN    ${total_price.num}
 
 Verify price tatol
     [Arguments]    ${totalCalculate}
