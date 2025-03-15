@@ -1,7 +1,7 @@
 websiet :
   url : https://www.saucedemo.com
-  browser : chrome
-  # browser : headlesschrome
+  # browser : chrome
+  browser : headlesschrome
 
 waitingTime :
   short : 3s
