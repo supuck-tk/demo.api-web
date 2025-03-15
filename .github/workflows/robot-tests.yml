@@ -36,7 +36,7 @@ jobs:
         pip install robotframework-requests
 
     - name: Set up ChromeDriver
-      uses: nanasess/setup-chromedriver@v1
+      uses: nanasess/setup-chromedriver@v2
       with:
         chromedriver-version: ${{ env.chromedriver-version }}
 
