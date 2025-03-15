@@ -42,7 +42,7 @@ jobs:
 
     - name: Run Robot Framework tests
       run: |
-        robot --outputdir results tests/${{ github.event.inputs.test_option }}
+        robot --outputdir results testcases/${{ github.event.inputs.test_option }}
       continue-on-error: true
 
     - name: Upload test results
