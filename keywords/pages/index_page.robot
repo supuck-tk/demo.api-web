@@ -25,7 +25,7 @@ Verify product active
         IF  "${status_activeProduct}"=="True"
             Collections.Append To List    ${productList_active}    ${nameProduct[${index}]}
         ELSE
-            Log    "Product Not Found - ${nameProduct[${index}]}"
+            Log    "Product Not Found - ${nameProduct[${index}]}"    WARN
         END
     END
     [RETURN]    ${productList_active}
