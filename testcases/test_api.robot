@@ -1,5 +1,6 @@
 *** Settings ***
-Resource    ${CURDIR}/../keywords/import.robot
+# Resource    ${CURDIR}/../keywords/import.robot
+Resource    ../keywords/import.robot
 
 *** Test Cases ***
 TC_2.1 Get user infomation and Verify Status

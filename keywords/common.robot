@@ -1,5 +1,6 @@
 *** Settings ***
-Resource    ${CURDIR}/import.robot
+# Resource    ${CURDIR}/import.robot
+Resource    ../keywords/import.robot
 
 *** Keywords ***
 Open web browser

@@ -1,5 +1,6 @@
 *** Settings ***
-Resource    ${CURDIR}/../import.robot
+# Resource    ${CURDIR}/../import.robot
+Resource    ../import.robot
 
 *** Keywords ***
 # Login Page

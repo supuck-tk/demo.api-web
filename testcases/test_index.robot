@@ -1,5 +1,6 @@
 *** Settings ***
-Resource    ${CURDIR}/../keywords/import.robot
+# Resource    ${CURDIR}/../keywords/import.robot
+Resource    ../keywords/import.robot
 Suite Teardown    Close Browser
 
 *** Test Cases ***
