@@ -13,7 +13,7 @@ on:
 
 env:
     python-version: '3.11.1'
-    chromedriver-version: '132.0.6834.110'
+    chromedriver-version: '134.0.6998.88'
 
 jobs:
   test:
@@ -36,7 +36,7 @@ jobs:
         pip install robotframework-requests
 
     - name: Set up ChromeDriver
-      uses: nanasess/setup-chromedriver@v1
+      uses: nanasess/setup-chromedriver@v2
       with:
         chromedriver-version: ${{ env.chromedriver-version }}
 
@@ -46,7 +46,7 @@ jobs:
       continue-on-error: true
 
     - name: Upload test results
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: robot-test-results
         path: results/
