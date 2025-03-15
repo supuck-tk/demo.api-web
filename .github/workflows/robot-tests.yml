@@ -44,10 +44,23 @@ jobs:
     - name: Run Robot Framework tests
       run: |
         robot --outputdir results testcases/${{ github.event.inputs.test_option }}
-      continue-on-error: true
+
+    # - name: Upload test results
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: robot-test-results
+    #     path: results/
 
     - name: Upload test results
+      if: success()
       uses: actions/upload-artifact@v4
       with:
-        name: robot-test-results
+        name: robot-test-results-success
+        path: results/
+  
+    - name: Upload log failure
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: log-failure
         path: results/

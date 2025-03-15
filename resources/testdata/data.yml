@@ -1,6 +1,6 @@
 TC_1  :
   data1 :
-    userName  : "standard_user"
+    userName  : "standard_userXXXXXX"
     password  : "secret_sauce"
   data2 :
     nameProduct  : ["Test.allTheThings() T-Shirt (Red)", "Sauce Labs Bike Light", "Sauce Labs Backpack"]
