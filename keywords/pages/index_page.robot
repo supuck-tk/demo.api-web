@@ -55,7 +55,7 @@ Verify product on cart
             BuiltIn.Should Be Equal    ${productCart}    ${nameProduct[${index}]}
             Collections.Append To List    ${productList_cart}    ${nameProduct[${index}]}
         ELSE
-            Log    "Products May Be Removed From Cart - ${nameProduct[${index}]}"    WARN
+            Log    "Products May Be Removed From Cart - ${nameProduct[${index}]}"
         END
     END
     [RETURN]    ${productList_cart}
