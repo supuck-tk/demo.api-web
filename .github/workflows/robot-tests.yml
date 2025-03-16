@@ -21,9 +21,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check condition step
+    - name: Check condition step (Skip Step)
       if: github.event.inputs.test_option == 'test_webUI.robot'
-      run: exit 78
+      run: echo "Skip this step"
 
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -69,9 +69,9 @@ jobs:
     needs: API-Testing
 
     steps:
-    - name: Check condition step
+    - name: Check condition step (Skip Step)
       if: github.event.inputs.test_option == 'test_api.robot'
-      run: exit 78
+      run: echo "Skip this step"
 
     - name: Checkout repository
       uses: actions/checkout@v2
