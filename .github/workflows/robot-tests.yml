@@ -17,10 +17,14 @@ env:
     chromedriver-version: '134.0.6998.88'
 
 jobs:
-  test:
+  API-Testing:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Check condition step
+      if: github.event.inputs.test_option == 'test_webUI.robot'
+      run: exit 78
+
     - name: Checkout repository
       uses: actions/checkout@v2
 
@@ -42,26 +46,68 @@ jobs:
       with:
         chromedriver-version: ${{ env.chromedriver-version }}
 
-    - name: Robot run test option
-      if: github.event.inputs.test_option != 'test_all_step.robot'
+    - name: Robot run api test
       run: |
-        robot --outputdir results testcases/${{ github.event.inputs.test_option }}
-
-    - name: Robot run all test steps
-      if: github.event.inputs.test_option == 'test_all_step.robot'
-      run: |
-        robot --outputdir results testcases
+        robot --outputdir results testcases/test_api.robot
 
     - name: Upload test results
       if: success()
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ github.event.inputs.test_option }}-results
+        name: API-Test-results
         path: results/
   
     - name: Upload log failure
       if: failure()
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ github.event.inputs.test_option }}-log-failure
+        name: API-log-failure
+        path: results/
+
+  WebUI-Testing:
+    runs-on: ubuntu-latest
+    needs: API-Testing
+
+    steps:
+    - name: Check condition step
+      if: github.event.inputs.test_option == 'test_api.robot'
+      run: exit 78
+
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ env.python-version }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install robotframework
+        pip install robotframework-seleniumlibrary
+        pip install robotframework-requests
+        pip install PyYAML
+
+    - name: Set up ChromeDriver
+      uses: nanasess/setup-chromedriver@v2
+      with:
+        chromedriver-version: ${{ env.chromedriver-version }}
+
+    - name: Robot run webUI test
+      run: |
+        robot --outputdir results testcases/test_webUI.robot
+
+    - name: Upload test results
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: WebUI-Test-results
+        path: results/
+    
+    - name: Upload log failure
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: WebUI-log-failure
         path: results/
