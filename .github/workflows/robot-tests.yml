@@ -8,8 +8,9 @@ on:
             required: true
             type: choice
             options:
-                - "test_index.robot"
+                - "test_webUI.robot"
                 - "test_api.robot"
+                - "test_all_step.robot"
 
 env:
     python-version: '3.11.1'
@@ -41,26 +42,26 @@ jobs:
       with:
         chromedriver-version: ${{ env.chromedriver-version }}
 
-    - name: Run Robot Framework tests
+    - name: Robot run test option
+      if: ${{ github.event.inputs.test_option }} != 'test_all_step'
       run: |
         robot --outputdir results testcases/${{ github.event.inputs.test_option }}
 
-    # - name: Upload test results
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: robot-test-results
-    #     path: results/
+    - name: Robot run all test steps
+      if: ${{ github.event.inputs.test_option }} == 'test_all_step'
+      run: |
+        robot --outputdir results testcases
 
     - name: Upload test results
       if: success()
       uses: actions/upload-artifact@v4
       with:
-        name: robot-test-results-success
+        name: ${{ github.event.inputs.test_option }}-results
         path: results/
   
     - name: Upload log failure
       if: failure()
       uses: actions/upload-artifact@v4
       with:
-        name: log-failure
+        name: ${{ github.event.inputs.test_option }}-log-failure
         path: results/
