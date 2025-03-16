@@ -43,12 +43,12 @@ jobs:
         chromedriver-version: ${{ env.chromedriver-version }}
 
     - name: Robot run test option
-      if: ${{ github.event.inputs.test_option }} != 'test_all_step'
+      if: ${{ github.event.inputs.test_option }} != 'test_all_step.robot'
       run: |
         robot --outputdir results testcases/${{ github.event.inputs.test_option }}
 
     - name: Robot run all test steps
-      if: ${{ github.event.inputs.test_option }} == 'test_all_step'
+      if: ${{ github.event.inputs.test_option }} == 'test_all_step.robot'
       run: |
         robot --outputdir results testcases
 
