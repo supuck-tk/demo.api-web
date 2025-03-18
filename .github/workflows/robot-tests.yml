@@ -19,15 +19,9 @@ env:
 jobs:
   API-Testing:
     runs-on: ubuntu-latest
-  
-    steps:
-    - name: Check condition
-      run: |
-        if [[ "${{ github.event.inputs.test_option }}" == "test_webUI.robot" ]]; then
-          echo "Skipping this job"
-          exit 0
-        fi
+    if: github.event.inputs.test_option == 'test_all_step.robot'
 
+    steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
@@ -69,16 +63,9 @@ jobs:
 
   WebUI-Testing:
     runs-on: ubuntu-latest
-    needs: API-Testing
+    if: github.event.inputs.test_option == 'test_all_step.robot'
 
     steps:
-    - name: Check condition
-      run: |
-        if [[ "${{ github.event.inputs.test_option }}" == "test_api.robot" ]]; then
-          echo "Skipping this job"
-          exit 0
-        fi
-    
     - name: Checkout repository
       uses: actions/checkout@v2
 
