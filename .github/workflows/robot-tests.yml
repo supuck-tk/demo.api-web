@@ -141,6 +141,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: ${{ github.event.inputs.test_option }}-Test-results
+        path: results/
     
     - name: Upload log failure
       if: failure()
