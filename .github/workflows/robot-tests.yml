@@ -14,7 +14,7 @@ on:
 
 env:
     python-version: '3.11.1'
-    chromedriver-version: '134.0.6998.88'
+    chromedriver-version: '136.0.7103.94'
 
 jobs:
   API-Testing:

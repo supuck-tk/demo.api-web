@@ -5,7 +5,8 @@ Resource    ${CURDIR}/../keywords/import.robot
 TC_2.1 Get user infomation and Verify Status
     # Get
     RequestsLibrary.Create Session    get    https://reqres.in/api
-    ${response}    GET On Session    get    /users/2
+    ${headers}    BuiltIn.Create Dictionary    Content-Type=application/json    x-api-key=${reqres_key}
+    ${response}    GET On Session    get    /users/2    headers=${headers}
     # Verify Status
     RequestsLibrary.Status Should Be    200    ${response}
 
@@ -13,7 +14,7 @@ TC_2.2 Create User and Verify Data
     # Create
     RequestsLibrary.Create Session    cerate    https://reqres.in/api
     ${data}    BuiltIn.Create Dictionary    name=${TC_2.Create.name}    job=${TC_2.Create.job}
-    ${headers}    BuiltIn.Create Dictionary    Content-Type=application/json
+    ${headers}    BuiltIn.Create Dictionary    Content-Type=application/json    x-api-key=${reqres_key}
     ${response}    RequestsLibrary.POST On Session    cerate    /users    json=${data}    headers=${headers}
     # Verify Status
     RequestsLibrary.Status Should Be    201    ${response}
@@ -29,7 +30,7 @@ TC_2.3 Update User and Verify Data
     # Update
     RequestsLibrary.Create Session    update    https://reqres.in/api
     ${data}    BuiltIn.Create Dictionary    name=${TC_2.Update.name}    job=${TC_2.Update.job}
-    ${headers}    BuiltIn.Create Dictionary    Content-Type=application/json
+    ${headers}    BuiltIn.Create Dictionary    Content-Type=application/json    x-api-key=${reqres_key}
     ${response}    RequestsLibrary.PUT On Session    update    /users/2    json=${data}    headers=${headers}
     # Verify Status
     RequestsLibrary.Status Should Be    200    ${response}
@@ -44,6 +45,7 @@ TC_2.3 Update User and Verify Data
 TC_2.4 Delete User and Verify Status
     # Delete
     RequestsLibrary.Create Session    delete    https://reqres.in/api
-    ${response}    RequestsLibrary.DELETE On Session    delete    /users/2
+    ${headers}    BuiltIn.Create Dictionary    Content-Type=application/json    x-api-key=${reqres_key}
+    ${response}    RequestsLibrary.DELETE On Session    delete    /users/2    headers=${headers}
     # Verify Status
     RequestsLibrary.Status Should Be    204    ${response}

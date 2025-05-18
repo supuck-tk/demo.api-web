@@ -7,3 +7,5 @@ waitingTime :
   short : 3s
   half  : 10s
   long  : 30s
+
+reqres_key : "reqres-free-v1"
